@@ -1,0 +1,16 @@
+node_modules/
+pyprogs/__pycache__
+pyprogs/IMG/*.png
+pyprogs/IMG/tb_images/*.png
+pyprogs/IMG/*.zip
+pyprogs/SVG/*.svg
+pyprogs/PNG/*.png
+pyprogs/unplaced/*.svg
+pyprogs/unplaced/*.png
+todo.txt
+pyprogs/Flanges_Library/Table_E/*.txt
+pyprogs/Flanges_Library/Class_150/*.txt
+pyprogs/Flanges_Library/PN_16/*.txt
+pyprogs/Flanges_Library/Table_E/*.py
+pyprogs/Flanges_Library/Class_150/*.py
+pyprogs/Flanges_Library/PN_16/*.py

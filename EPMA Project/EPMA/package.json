@@ -1,0 +1,26 @@
+{
+  "name": "epma",
+  "version": "1.0.0",
+  "description": "Efficient Positioning Machining Algorithm",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SayadPervez/efcnc_gui.git"
+  },
+  "author": "Sayad Pervez, Shyam Sundar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SayadPervez/efcnc_gui/issues"
+  },
+  "homepage": "https://github.com/SayadPervez/efcnc_gui#readme",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.1",
+    "socket.io": "^4.4.0",
+    "socket.io-client": "^4.4.0"
+  }
+}

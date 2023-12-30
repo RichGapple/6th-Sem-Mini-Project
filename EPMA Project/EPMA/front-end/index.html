@@ -1,0 +1,551 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="./materialicons.css" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="./materialize.css">
+  <link rel="stylesheet" href="./scrollbar.css">
+  <link rel="stylesheet" href="./slider.css">
+  <link rel="stylesheet" href="./skin.css">
+  <link rel="stylesheet" href="./priority.css">
+  <link rel="icon" type="image/x-icon" href="./favicon.png">
+  <title>EPMA</title>
+</head>
+<body>
+    <div id="icon_div"><span class="material-icons-round" style="font-size: 4rem;margin-bottom:2rem;">
+      dashboard
+      </span></div>
+
+
+      <div id="abort_icon">
+        <button id="pybort_button" ondblclick="pybort()" class="waves-effect waves-dark red accent-3 black-text btn-large"><i class="material-icons-outlined right" style="font-size: 2.3rem;">cancel</i><strong>Abort</strong></button>
+      </div>
+
+    <div class="empty"></div>
+
+    <!--Objects-->
+    <div id="shopping_list" class="row" style="width:95%;margin-left: auto;margin-right: auto;">
+      <div class="col l3">
+        <div class="card z-depth-3">
+          <div class="card-image">
+            <img src="./canvas.png">
+            
+            <a class="btn-large btn-floating halfway-fab waves-effect waves-light yellow darken-4 modal-trigger" data-target="modal_canvas"><i class="material-icons">add</i></a>
+          </div>
+          <div class="card-content">
+            <p><strong>Add a CANVAS</strong></p>
+          </div>
+        </div>
+      </div>
+        <div class="col l3">
+          <div class="card z-depth-3">
+            <div class="card-image">
+              <img src="./cutsheet.png">
+              
+              <a class="btn-large btn-floating halfway-fab waves-effect waves-light yellow darken-4 modal-trigger" data-target="modal_cutsheet"><i class="material-icons">add</i></a>
+            </div>
+            <div class="card-content">
+              <p><strong>Add a Cut Sheet</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="col l3">
+            <div class="card z-depth-3">
+              <div class="card-image">
+                <img src="./circle.png">
+                
+                <a class="btn-large btn-floating halfway-fab waves-effect waves-light yellow darken-4 modal-trigger" data-target="modal_circle"><i class="material-icons">add</i></a>
+              </div>
+              <div class="card-content">
+                <p><strong>Add a Circle</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col l3">
+            <div class="card z-depth-3">
+              <div class="card-image">
+                <img src="./flanges.png">
+                
+                <a class="btn-large btn-floating halfway-fab waves-effect waves-light yellow darken-4 modal-trigger" data-target="modal_flange"><i class="material-icons">add</i></a>
+              </div>
+              <div class="card-content">
+                <p><strong>Add Flanges</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col l3">
+            <div class="card z-depth-3">
+              <div class="card-image">
+                <img src="./cone.png">
+                
+                <a class="btn-large btn-floating halfway-fab waves-effect waves-light yellow darken-4 modal-trigger" data-target="modal_cone"><i class="material-icons">add</i></a>
+              </div>
+              <div class="card-content">
+                <p><strong>Add a Cone</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col l3">
+            <div class="card z-depth-3">
+              <div class="card-image">
+                <img src="./cone.png">
+                
+                <a class="btn-large btn-floating halfway-fab waves-effect waves-light yellow darken-4 modal-trigger" data-target="modal_sector"><i class="material-icons">add</i></a>
+              </div>
+              <div class="card-content">
+                <p><strong>Add a Sector</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col l3">
+            <div class="card z-depth-3">
+              <div class="card-image">
+                <img src="./frustum.png">
+                
+                <a class="btn-large btn-floating halfway-fab waves-effect waves-light yellow darken-4 modal-trigger" data-target="modal_frustum"><i class="material-icons">add</i></a>
+              </div>
+              <div class="card-content">
+                <p><strong>Add a Frustum</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col l3">
+            <div class="card z-depth-3">
+              <div class="card-image">
+                <img src="./frustum.png">
+                
+                <a class="btn-large btn-floating halfway-fab waves-effect waves-light yellow darken-4 modal-trigger" data-target="modal_segment"><i class="material-icons">add</i></a>
+              </div>
+              <div class="card-content">
+                <p><strong>Add a Segment</strong></p>
+              </div>
+            </div>
+          </div>
+          <!--
+          <div class="col l3">
+            <div class="card z-depth-3">
+              <div class="card-image">
+                <img src="./custom.png">
+                
+                <a class="btn-large btn-floating halfway-fab waves-effect waves-light yellow darken-4 modal-trigger" data-target="modal_custom"><i class="material-icons">add</i></a>
+              </div>
+              <div class="card-content">
+                <p><strong>Add a Custom Object</strong></p>
+              </div>
+            </div>
+          </div>-->
+    </div>
+    <div id="error_log_div">
+      <span style="font-size: large;font-weight:bold ;">Errors</span><br>
+      <span style="color: red;font-weight: bold;padding-left: 1rem;" id="error_log_span">Error</span><br><br>
+      <button id="error_log_button" class="btn yellow darken-4" style="margin-left: auto;" onClick="window.location.reload();"><span style="font-weight: bold;text-transform: capitalize;">Retry...</span></button>
+    </div>
+    <div id="Inventory-div" class="row">
+        <div class="col l2"></div>
+        <div class="col l8">
+          <h3 class="center-align">Inventory</h3><table class="highlight centered">
+            <thead>
+              <tr>
+                  <th>Shape name</th>
+                  <th>Dimensions</th>
+                  <th>Shape ID</th>
+                  <th><i class="material-icons">clear</i></th>
+              </tr>
+            </thead>
+    
+            <tbody id="table_body">
+            </tbody>
+        </table></div>
+        <div class="col l2"></div>
+    </div>
+    
+    
+    <br><br><br><br><br><br>
+    <!--Final blocks-->
+    <div id="final_div">
+      <button class="waves-effect waves-dark yellow accent-4 black-text btn-large modal-trigger" data-target="modal_process"><i class="material-icons right">dashboard</i><strong>Process</strong></button>
+    </div>
+
+    <div id="info_div">
+      <button id="info_butt" onclick="window.open(window.location.href+'download')" class="z-depth-3 waves-effect waves-light red white-text darken-4"><strong>Process Running ...</strong></button>
+    </div>
+    
+    <div id="recycle_div" style="visibility: hidden;">
+      <button onclick="clean()" class="waves-effect waves-dark green accent-4 black-text btn-large"><i class="material-icons">cleaning_services</i></button>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal_canvas" class="modal">
+      <div class="modal-content">
+          <div class="row">
+              <div class="col l6">
+                  <img src="dim_rectangle.png">
+              </div>
+              <div class="col l6">
+                  <h4>Enter the Canvas Dimensions</h4>
+                  <div class="input-field">
+                      <input id="input_canvas_width" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                      <label for="input_canvas_width" class="yellow-text text-darken-4"><strong>Canvas Width (w)</strong></label>
+                  </div>
+                  <div class="input-field">
+                      <input value="1500" id="input_canvas_height" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                      <label for="input_canvas_height" class="yellow-text text-darken-4"><strong>Canvas Height (h)</strong></label>
+                  </div>
+                  <div class="input-field">
+                    <input value="3" id="input_canvas_thickness" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                    <label for="input_canvas_thickness" class="yellow-text text-darken-4"><strong>Sheet Thickness (t)</strong></label>
+                  </div>
+                  <div>
+                      <button class="modal-close waves-effect waves-dark red darken-2 btn" style="margin-right:20px;" onclick="canvas_cancel()">Cancel</button>
+                      <button class="yellow darken-4 waves-effect waves-light btn" style="margin-right:20px;" onclick="canvas_submit()">Create Canvas</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    <div id="modal_custom" class="modal">
+        <div class="modal-content">
+        <h4>Add a Custom Shape</h4>
+        <div class="input-field">
+            <input id="input_name" type="text" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+            <label for="input_name" class="yellow-text text-darken-4">Shape Name</label>
+        </div>
+        <div id="output" style="display: none;"></div>
+        <p class="yellow-text text-darken-4 bld">Number of objects :</p>
+        <p class="range-field">
+          <input type="range" id="kount_custom" min="1" max="20" value="1" />
+        </p>
+        <p><strong>Choose the SVG file :</strong></p>
+        <input type="file" id="myfileinput" name="input_shape" accept="image/svg+xml">
+        </div>
+        <div class="modal-footer">
+        <button class="modal-close waves-effect waves-dark red darken-2 btn" style="margin-right:20px;" onclick="custom_cancel()">Cancel</button>
+        <button id="send-file-button" class="yellow darken-4 waves-effect waves-light btn" style="margin-right:20px;">Create Object</button>
+        </div>
+    </div>
+    <div id="modal_cutsheet" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col l6">
+                    <img src="dim_rectangle.png">
+                </div>
+                <div class="col l6">
+                    <h4>Enter the Cut Sheet Dimensions</h4>
+                    <div class="input-field">
+                        <input id="input_sheet_width" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                        <label for="input_sheet_width" class="yellow-text text-darken-4"><strong>Sheet Width (w)</strong></label>
+                    </div>
+                    <div class="input-field">
+                        <input id="input_sheet_height" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                        <label for="input_sheet_height" class="yellow-text text-darken-4"><strong>Sheet Height (h)</strong></label>
+                    </div>
+                    <p class="yellow-text text-darken-4 bld">Number of objects :</p>
+                    <p class="range-field">
+                      <input type="range" id="kount_cutsheet" min="1" max="20" value="1" />
+                    </p>
+                    <div>
+                        <button class="modal-close waves-effect waves-dark red darken-2 btn" style="margin-right:20px;" onclick="cutsheet_cancel()">Cancel</button>
+                        <button class="yellow darken-4 waves-effect waves-light btn" style="margin-right:20px;" onclick="cutsheet_submit()">Create Object</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal_circle" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col l6">
+                    <img src="dim_circle.png">
+                </div>
+                <div class="col l6">
+                    <h4>Enter the Circle Dimensions</h4>
+                    <div class="input-field">
+                        <input id="input_circle_radius" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                        <label for="input_circle_radius" class="yellow-text text-darken-4"><strong>Circle Radius (r)</strong></label>
+                    </div>
+                    <p class="yellow-text text-darken-4 bld">Number of objects :</p>
+                    <p class="range-field">
+                      <input type="range" id="kount_circle" min="1" max="20" value="1" />
+                    </p>
+                    <div>
+                        <button class="modal-close waves-effect waves-dark red darken-2 btn" style="margin-right:20px;" onclick="circle_cancel()">Cancel</button>
+                        <button class="yellow darken-4 waves-effect waves-light btn" style="margin-right:20px;" onclick="circle_submit()">Create Object</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal_flange" class="modal" style="min-height: 75vh;">
+      <div class="modal-content">
+          <div class="row">
+              <div class="col l6">
+                  <img src="dim_flange.png">
+              </div>
+              <div class="col l6">
+                  <h4>Flanges</h4>
+      <div class="input-field col s12">
+        <select id="flange_select_input">
+          <optgroup label="Table E" style="color:black;">
+            <option value="tbee_95_6">95 - 6</option>
+            <option value="tbee_102_6">102 - 6</option>
+            <option value="tbee_114_7">114 - 7</option>
+            <option value="tbee_120_8">120 - 8</option>
+            <option value="tbee_133_9">133 - 9</option>
+            <option value="tbee_152_10">152 - 10</option>
+            <option value="tbee_165_10">165 - 10</option>
+            <option value="tbee_184_11">184 - 11</option>
+            <option value="tbee_216_13">216 - 13</option>
+            <option value="tbee_254_14">254 - 14</option>
+            <option value="tbee_280_18">280 - 18</option>
+            <option value="tbee_337_19">337 - 19</option>
+            <option value="tbee_406_22">406 - 22</option>
+            <option value="tbee_457_25">457 - 25</option>
+            <option value="tbee_527_25">527 - 25</option>
+            <option value="tbee_578_25">578 - 25</option>
+            <option value="tbee_641_28">641 - 28</option>
+            <option value="tbee_705_32">705 - 32</option>
+            <option value="tbee_826_38">826 - 38</option>
+          </optgroup>
+          <optgroup label="Class 150">
+            <option value="c150_89_11">89 - 11</option>
+            <option value="c150_98_13">98 - 13</option>
+            <option value="c150_108_14">108 - 14</option>
+            <option value="c150_118_16">118 - 16</option>
+            <option value="c150_127_18">127 - 18</option>
+            <option value="c150_152_19">152 - 19</option>
+            <option value="c150_178_22">178 - 22</option>
+            <option value="c150_191_24">191 - 24</option>
+            <option value="c150_229_24">229 - 24</option>
+            <option value="c150_254_24">254 - 24</option>
+            <option value="c150_279_25">279 - 25</option>
+            <option value="c150_343_29">343 - 29</option>
+            <option value="c150_406_30">406 - 30</option>
+            <option value="c150_483_32">483 - 32</option>
+            <option value="c150_533_35">533 - 35</option>
+            <option value="c150_597_37">597 - 37</option>
+            <option value="c150_635_40">635 - 40</option>
+            <option value="c150_697_43">697 - 43</option>
+          </optgroup>
+          <optgroup label="PN 16">
+            <option value="pn16_95_14">95 - 14</option>
+            <option value="pn16_105_16">105 - 16</option>
+            <option value="pn16_115_16">115 - 16</option>
+            <option value="pn16_140_16">140 - 16</option>
+            <option value="pn16_150_16">150 - 16</option>
+            <option value="pn16_165_18">165 - 18</option>
+            <option value="pn16_185_18">185 - 18</option>
+            <option value="pn16_200_20">200 - 20</option>
+            <option value="pn16_220_20">220 - 20</option>
+            <option value="pn16_250_22">250 - 22</option>
+            <option value="pn16_285_22">285 - 22</option>
+            <option value="pn16_340_24">340 - 24</option>
+            <option value="pn16_405_28">405 - 28</option>
+            <option value="pn16_460_28">460 - 28</option>
+            <option value="pn16_520_30">520 - 30</option>
+            <option value="pn16_580_32">580 - 32</option>
+            <option value="pn16_640_36">640 - 36</option>
+            <option value="pn16_715_36">715 - 36</option>
+            <option value="pn16_840_44">840 - 44</option>
+          </optgroup>
+        </select>
+        <label class="yellow-text text-darken-4 bld">Select Flange</label>
+      </div>
+                  <p class="yellow-text text-darken-4 bld">Number of objects :</p>
+                  <p class="range-field">
+                    <input type="range" id="kount_flange" min="1" max="20" value="1" />
+                  </p>
+                  <div>
+                      <button class="modal-close waves-effect waves-dark red darken-2 btn" style="margin-right:20px;" onclick="flange_cancel()">Cancel</button>
+                      <button class="yellow darken-4 waves-effect waves-light btn" style="margin-right:20px;" onclick="flange_submit()">Create Object</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    <div id="modal_cone" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col l6">
+                    <img src="dim_cone.png">
+                </div>
+                <div class="col l6">
+                    <h4>Enter the Cone Dimensions</h4>
+                    <div class="input-field">
+                        <input id="input_cone_height" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                        <label for="input_cone_height" class="yellow-text text-darken-4"><strong>Cone Height (h)</strong></label>
+                    </div>
+                    <div class="input-field">
+                        <input id="input_cone_radius" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                        <label for="input_cone_radius" class="yellow-text text-darken-4"><strong>Cone Radius (r)</strong></label>
+                    </div>
+                    <p class="yellow-text text-darken-4 bld">Number of objects :</p>
+                    <p class="range-field">
+                      <input type="range" id="kount_cone" min="1" max="20" value="1" />
+                    </p>
+                    <div>
+                        <button class="modal-close waves-effect waves-dark red darken-2 btn" style="margin-right:20px;" onclick="cone_cancel()">Cancel</button>
+                        <button class="yellow darken-4 waves-effect waves-light btn" style="margin-right:20px;" onclick="cone_submit()">Create Object</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal_frustum" class="modal">
+      <div class="modal-content">
+          <div class="row">
+              <div class="col l6">
+                  <img src="dim_frustum.png">
+              </div>
+              <div class="col l6">
+                  <h4>Enter the Frustum Dimensions</h4>
+                  <div class="input-field">
+                      <input id="input_frustum_height" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                      <label for="input_frustum_height" class="yellow-text text-darken-4"><strong>Frustum Height (h)</strong></label>
+                  </div>
+                  <div class="input-field">
+                      <input id="input_frustum_R" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                      <label for="input_frustum_R" class="yellow-text text-darken-4"><strong>Frustum Radius (R)</strong></label>
+                  </div>
+                  <div class="input-field">
+                    <input id="input_frustum_r" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                    <label for="input_frustum_r" class="yellow-text text-darken-4"><strong>Frustum Radius (r)</strong></label>
+                </div>
+                  <p class="yellow-text text-darken-4 bld">Number of objects :</p>
+                  <p class="range-field">
+                    <input type="range" id="kount_frustum" min="1" max="20" value="1" />
+                  </p>
+                  <div>
+                      <button class="modal-close waves-effect waves-dark red darken-2 btn" style="margin-right:20px;" onclick="frustum_cancel()">Cancel</button>
+                      <button class="yellow darken-4 waves-effect waves-light btn" style="margin-right:20px;" onclick="frustum_submit()">Create Object</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div id="modal_segment" class="modal">
+      <div class="modal-content">
+        <div class="row">
+            <div class="col l6">
+                <img src="dim_segment.png">
+            </div>
+            <div class="col l6">
+                <h4>Enter the Segment Dimensions</h4>
+                <div class="input-field">
+                    <input id="input_segment_R" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                    <label for="input_segment_R" class="yellow-text text-darken-4"><strong>Segment Radius (R)</strong></label>
+                </div>
+                <div class="input-field">
+                  <input id="input_segment_r" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                  <label for="input_segment_r" class="yellow-text text-darken-4"><strong>Segment Radius (r)</strong></label>
+                </div>
+                <div class="input-field">
+                  <input id="input_segment_angle" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                  <label for="input_segment_angle" class="yellow-text text-darken-4"><strong>Segment Angle (θ)</strong></label>
+                </div>
+                <p class="yellow-text text-darken-4 bld">Number of objects :</p>
+                <p class="range-field">
+                  <input type="range" id="kount_segment" min="1" max="20" value="1" />
+                </p>
+                <div>
+                    <button class="modal-close waves-effect waves-dark red darken-2 btn" style="margin-right:20px;" onclick="segment_cancel()">Cancel</button>
+                    <button class="yellow darken-4 waves-effect waves-light btn" style="margin-right:20px;" onclick="segment_submit()">Create Object</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="modal_sector" class="modal">
+      <div class="modal-content">
+          <div class="row">
+              <div class="col l6">
+                  <img src="dim_sector.png" style="width:70%;margin:auto auto">
+              </div>
+              <div class="col l6">
+                  <h4>Enter the Sector Dimensions</h4>
+                  <div class="input-field">
+                      <input id="input_sector_radius" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                      <label for="input_sector_radius" class="yellow-text text-darken-4"><strong>Sector Radius (r)</strong></label>
+                  </div>
+                  <div class="input-field">
+                      <input id="input_sector_angle" type="number" class="validate  yellow-text text-darken-4" style="border-bottom-color:#f57f17;">
+                      <label for="input_sector_angle" class="yellow-text text-darken-4"><strong>Sector Angle (θ)</strong></label>
+                  </div>
+                  <p class="yellow-text text-darken-4 bld">Number of objects :</p>
+                  <p class="range-field">
+                    <input type="range" id="kount_sector" min="1" max="20" value="1" />
+                  </p>
+                  <div>
+                      <button class="modal-close waves-effect waves-dark red darken-2 btn" style="margin-right:20px;" onclick="sector_cancel()">Cancel</button>
+                      <button class="yellow darken-4 waves-effect waves-light btn" style="margin-right:20px;" onclick="sector_submit()">Create Object</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    <div id="modal_delete_row" class="modal">
+      <div class="modal-content">
+        <h4>Confirm Deletion</h4>
+        <p>Are you sure about deleteing the following object ?</p>
+        <p id="deletion_modal_contents"></p>
+
+        <div>
+            <button class="modal-close waves-effect waves-dark green btn" style="margin-right:20px;" onclick="del_cancel()">Cancel</button>
+            <button class="red darken-2 waves-effect waves-light btn" style="margin-right:20px;" onclick="del_submit()"><strong>Delete Object</strong></button>
+        </div>
+      </div>
+    </div>
+    <div id="modal_process" class="modal">
+      <div class="modal-content" style="min-height:60vh;">
+        <h3>Process Publish Page :</h3>
+        <div class="row">
+          <div class="col l2"></div>
+          <div class="col l8">
+                <div class="input-field col s12">
+                  <select id="clearance_select">
+                    <option value="3" selected>3 mm</option>
+                    <option value="5">5 mm</option>
+                    <option value="10">10 mm</option>
+                  </select>
+                  <label style="font-weight: bold;color:#f57f17;">Enter Object Spacing</label>
+                </div><br><br>
+                <div class="input-field col s12">
+                  <select id="alg_select">
+                    <option value="auto" selected>Auto</option>
+                    <option value="1">Size Sort Algorithm</option>
+                    <option value="2">Edge Sort Algorithm</option>
+                    <option value="3">Surround Tilt Algorithm</option>
+                    <option value="4">Close In Algorithm</option>
+                    <option value="5">Square Pack</option>
+                    <option value="6">Edge Pack Algorithm</option>
+                  </select>
+                  <label style="font-weight: bold;color:#f57f17;">Algorithm</label>
+                </div>
+                <p class="yellow-text text-darken-4 bld">Select Efficiency :</p>
+                <p class="range-field">
+                  <input type="range" id="efficiency_range" min="40" max="100" value="90" />
+                </p>
+              </div>
+              <div class="col l2"></div>
+          </div>
+        </div><div class="row">
+        <div class="col l8"></div>
+        <div class="col l4">
+            <button id="publish_cancel" style="margin-right:20px;"  class="modal-close waves-effect waves-dark red darken-2 btn" onclick="process_cancel()">Cancel</button>
+            <button id="publish_run" style="margin-right:20px;"  class="green darken-2 waves-effect waves-light btn" onclick="publish()"><strong>RUN !</strong></button>
+        </div>
+      </div>
+    </div>
+
+<script src="jquery.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="./flanges_data.js"></script>
+<script src="./functions.js"></script>
+<script src="./brain.js"></script>
+<script src="./mbrain.js"></script>
+<script src="./materilizejs.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="./comms.js"></script>
+</body>
+</html>

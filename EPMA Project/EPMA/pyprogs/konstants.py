@@ -1,0 +1,1 @@
+svgScaleConstant = 3 # => actualsize / 3

@@ -10,10 +10,12 @@ import math
 from winsound import Beep as beep
 import konstants
 from zipper import zipFiles
+from fiximages import *
 
 objList,cc=[],[]
 thickness=[]
 alg = []
+imgID = []
 canvas__=None
 
 def RUN(jsonString):
@@ -46,8 +48,13 @@ def RUN(jsonString):
         elif(name_=="Cut-Sheet"):
             w,h = list(map(float,dim_))
             for _ in range(int(_kount_)):
+                
+                # STEP 2
+                
+                print("STEP 2")
                 objList.append(CutSheet(w,h,0,id_+str(_)))
                 pushNotification("Cut-Sheet Created")
+                imgID.append(id_+str(_))
         elif(name_=="Circle"):
             r = float(dim_[0])
             for _ in range(int(_kount_)):
@@ -86,6 +93,9 @@ def RUN(jsonString):
                 pushNotification("Flange Created")
     pushNotification("Object Creation Completed")
 
+    for imgs in imgID:
+        remove_white_boundaries("./PNG/"+imgs+".png",imgs)
+    
     print("algorithm:",alg[0])
     print("thickness:",thickness[0])
     for obj in objList:

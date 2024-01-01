@@ -5,8 +5,10 @@ from random import randint as ri
 import svgBuilder
 from shutil import copyfile
 import konstants
+import cv2
 
 class CutSheet:
+    print("STEP 1")
     '''
     Give side in milli-meter( mm ) and angle in degrees( ° )
     '''

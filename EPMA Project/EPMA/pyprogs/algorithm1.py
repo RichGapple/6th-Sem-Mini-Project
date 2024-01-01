@@ -5,6 +5,10 @@ from math import ceil
 def fitting(canvas,shapeList,col=True,log_=False,constCompute=False):
     unplacedShapes=[]
     placedShapes=[]
+    # print("****************************")
+    # for shape in shapeList:
+    #     print(shape)
+    # print("****************************")
     cArray = np.array(canvas.shapeMatrix,dtype=float) #cArray => canvasArray
     cx,cy = np.shape(cArray)
     stepX = constCompute if constCompute else 1
@@ -15,6 +19,8 @@ def fitting(canvas,shapeList,col=True,log_=False,constCompute=False):
         for shape in shapeList:
             shapePlaced = False
             sArray = np.array(shape.shapeMatrix,dtype=float)
+            print("Printing sArray")
+            print(sArray)
             sx,sy = np.shape(sArray)
             newCanvas = np.copy(cArray)
             for row in range(0,cx-sx,stepX):
@@ -48,6 +54,7 @@ def fitting(canvas,shapeList,col=True,log_=False,constCompute=False):
         for shape in shapeList:
             shapePlaced=False
             sArray = np.array(shape.shapeMatrix,dtype=float)
+            print("STEP 3")
             sx,sy = np.shape(sArray)
             newCanvas = np.copy(cArray)
             for col in range(0,cy-sy,stepY):

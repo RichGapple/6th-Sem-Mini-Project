@@ -28,6 +28,9 @@ class CutSheet:
         self.pngPath = f"./PNG/{uid}.png"
         self.svgPath = f"./SVG/{uid}.svg"
         self.__generateShape__(length,height,angle)
+        
+        #This fixes the notification of shape size too large to fit the canvas
+        self.shapeFrameDimension = [length, height]
 
     def __repr__(self):
         return(f"Object Shape \t: {self.myShape}\nObject UID \t: {self.uid}\nSide Length \t: {self.length} mm\nSide Height \t: {self.height} mm\nShape Tilt \t: {self.angle} °\nshapeFrameDimension \t: {self.shapeFrameDimension}")

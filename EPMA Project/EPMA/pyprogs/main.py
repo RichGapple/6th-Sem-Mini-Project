@@ -44,6 +44,8 @@ def RUN(jsonString):
         if(name_=="Canvas"):
             w,h,t = list(map(float,dim_))
             canvas__=Canvas(w,h)
+            #Fix the shapeFrameDimensions for canvas
+            canvas__.shapeFrameDimension = [canvas__.length, canvas__.height]
             pushNotification("Canvas Created")
         elif(name_=="Cut-Sheet"):
             w,h = list(map(float,dim_))
